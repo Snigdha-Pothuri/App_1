@@ -12,7 +12,8 @@ var gameState = START;
    qimg2 = loadImage("q2 (1).png") 
    qimg3 = loadImage("q3 (1).png") 
    qimg4 = loadImage("q4 (1).png")
-   qimg5 = loadImage("q5 (1).jpg")
+   qimg5 = loadImage("q5 (1).jpg") 
+   h=loadImage("home.jpg")
  }
 function setup() {
   createCanvas(400,500); 
@@ -55,7 +56,7 @@ if(gameState === START) {
     b.destroy();
    button.hide(); 
 
-    fill("black") 
+   /* fill("black") 
     textSize(25)
     text("What type of person are you?",20,50);
     textSize(30)
@@ -65,7 +66,23 @@ if(gameState === START) {
     text("Click on the below button to start the quiz",20,200) 
       
     button1 = createButton("Start Quiz"); 
-    button1.position (150,250); 
+    button1.position (150,250); */  
+
+    c=createSprite(200, 120, 50, 50); 
+    c.addImage("h1",h)  
+    c.scale = 0.45;
+  
+    button1 = createButton("Personality Quiz"); 
+    button1.position (20,250); 
+
+    b1 = createButton("Tips to stop procastinating"); 
+    b1.position (20,300);
+
+    b2 = createButton("Chat"); 
+    b2.position (20,350); 
+
+    b3 = createButton("Talk to an expert"); 
+    b3.position (20,400);
 
     button1.mousePressed (()=>{
       gameState = QUIZ;
@@ -75,8 +92,11 @@ if(gameState === START) {
 
   if(gameState === QUIZ) { 
     background("#F6B6D1")
-    hide();
-   
+    c.destroy();
+    button1.hide();
+    b1.hide();
+    b2.hide();
+    b3.hide();
 
     button2 = createButton("A) Yes"); 
     button2.position (20,250); 

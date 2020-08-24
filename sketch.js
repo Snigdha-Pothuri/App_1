@@ -13,7 +13,11 @@ var gameState = START;
    qimg3 = loadImage("q3 (1).png") 
    qimg4 = loadImage("q4 (1).png")
    qimg5 = loadImage("q5 (1).jpg") 
-   h=loadImage("home.jpg")
+   h=loadImage("home.jpg") 
+   b = loadImage("quiz.jpg") 
+   proimg = loadImage("pro.png")
+   tipsimg = loadImage("b1.jpg") 
+   chatimg = loadImage("chat.jpg") 
  }
 function setup() {
   createCanvas(400,500); 
@@ -72,17 +76,17 @@ if(gameState === START) {
     c.addImage("h1",h)  
     c.scale = 0.45;
   
-    button1 = createButton("Personality Quiz"); 
-    button1.position (20,250); 
+    button1 = createSprite(20,250,50,50); 
+    button1.addImage ("b1",b); 
 
-    b1 = createButton("Tips to stop procastinating"); 
-    b1.position (20,300);
+    b1 = createSprite(20,300,50,50); 
+    b1.addImage("p",proimg)
 
-    b2 = createButton("Chat"); 
-    b2.position (20,350); 
+    b2 = createSprite(20,350); 
+    b2.addImage("c",chatimg);            
 
-    b3 = createButton("Talk to an expert"); 
-    b3.position (20,400);
+    b3 = createButton(20,400); 
+    b3.addImage("t",tipsimg);
 
     button1.mousePressed (()=>{
       gameState = QUIZ;
@@ -93,26 +97,25 @@ if(gameState === START) {
   if(gameState === QUIZ) { 
     background("#F6B6D1")
     c.destroy();
-    button1.hide();
-    b1.hide();
-    b2.hide();
-    b3.hide();
+    //hide();
+   
 
-    button2 = createButton("A) Yes"); 
+    button2 = createButton("A) Yes, I would love that"); 
     button2.position (20,250); 
 
-    button3 = createButton("B) No"); 
+    button3 = createButton("B) No Way! Never"); 
     button3.position (20,300); 
     
     button4 = createButton("C) Sometimes/Maybe"); 
     button4.position (20,350); 
 
     var q = createSprite(200,100,50,50); 
-    q.addImage("1",qimg1)   
+    q.addImage("q1",qimg1)   
+ 
 
     
     button2.mousePressed (()=>{ 
-      q.addImage("2",qimg2)
+    q.changeAnimation("q2")                                                                                   
         })
 
 
@@ -122,6 +125,8 @@ if(gameState === START) {
  
 } 
 function hide () {
-  button1.hide();
+  button1.hide(); 
+   b1.hide();
+    b2.hide();
+    b3.hide();
 }
-
